@@ -3,21 +3,19 @@ class Segment{
     //private Segment prev;
     private float xCoord1;
     private float xCoord2;
-    private float yCoord;
-    private int red, green, blue;
+    private float yCoord1;
+    private float yCoord2;
     private String name;
     private int sWeight;
     private boolean isAlive;  
     
-    public Segment( String sname,float x1, float x2, float y, int r, int g, int b)
+    public Segment( String sname,float x1, float y1, float x2, float y2)
     {
         xCoord1 = x1 ;
         xCoord2 = x2;
-        yCoord = y ; //help translate the y-coordinate system
+        yCoord1 = y1; 
+        yCoord2 = y2;//help translate the y-coordinate system
         name = sname;
-        red = r;
-        blue = b;
-        green = g;
         sWeight = 3;
         isAlive = false;
         
@@ -38,14 +36,20 @@ class Segment{
         return xCoord2;
     }
     
-    public void setY(float y)
+    public void setY(float y1, float y2)
     {
-        yCoord = y;
+        yCoord1 = y1;
+        yCoord2 = y2;
     }
     
-    public float getY()
+    public float getY1()
     {
-        return yCoord;
+        return yCoord1;
+    }
+    
+    public float getY2()
+    {
+        return yCoord2;
     }
     
     public void setName(String sname)
@@ -82,7 +86,7 @@ class Segment{
     {
         String str = null;
         str = name + "\n";
-        str += "   x1: "+ xCoord1 + " x2: " + xCoord2 + " y: " + (yCoord);
+        str += "   x1: "+ xCoord1 + " y1: " + yCoord1 + " x2: " + (xCoord2) + " y2: " + yCoord2;
         return str;
     }
     
@@ -116,8 +120,8 @@ class Segment{
         * Need to subtract 700 that line is drawn properly pretending that (0,0) is on bottom left corner of 
         * of white rectangle
         */
-        stroke(red, green, blue);
-        line(xCoord1, 700-yCoord, xCoord2, 700-yCoord);
+        //stroke(red, green, blue);
+        line(xCoord1, 700-yCoord1, xCoord2, 700-yCoord2);
         //stroke(red, green, blue);
     }//END drawSwg
     
